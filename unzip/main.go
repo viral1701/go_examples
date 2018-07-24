@@ -10,7 +10,6 @@ func main() {
 	zipfile := flag.String("zipfile", "", "zipfilepath")
 	extact := flag.String("extract", "", "extractdestination")
 	flag.Parse()
-
 	checkfile(filetodelete)
 
 	err := unzip(*zipfile, *extact)
