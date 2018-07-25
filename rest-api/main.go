@@ -70,8 +70,8 @@ func main() {
 	people = append(people, Person{ID: "001", FirstName: "Alan", LastName: "Smith", Address: &Address{City: "London", County: "Middlesex"}})
 	people = append(people, Person{ID: "002", FirstName: "Carol", LastName: "Pole", Address: &Address{City: "Kingson", County: "Kingston"}})
 	router.HandleFunc("/people", GetPeople).Methods("GET")
-	router.HandleFunc("/people", GetPerson).Methods("GET")
-	router.HandleFunc("/people", CreatePerson).Methods("POST")
-	router.HandleFunc("/people", DeletePerson).Methods("DELETE")
+	router.HandleFunc("/people/{id}", GetPerson).Methods("GET")
+	router.HandleFunc("/people/{id}", CreatePerson).Methods("POST")
+	router.HandleFunc("/people/{id}", DeletePerson).Methods("DELETE")
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
