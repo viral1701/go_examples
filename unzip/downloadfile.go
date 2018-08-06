@@ -5,11 +5,12 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"runtime"
 )
 
 func downloadfile(uri, filepath string) error {
 
-	outfile, err := os.Create("filepath")
+	outfile, err := os.Create(filepath)
 	if err != nil {
 		return err
 	}
@@ -17,7 +18,7 @@ func downloadfile(uri, filepath string) error {
 	defer outfile.Close()
 
 	//Downloading File
-	fmt.Println("Downloading File")
+	fmt.Println("Downloading File From......" + uri)
 	response, err := http.Get(uri)
 	if err != nil {
 		return err
@@ -31,4 +32,29 @@ func downloadfile(uri, filepath string) error {
 	}
 
 	return nil
+}
+
+func downloadversion(version, path string) error {
+	if runtime.GOOS == "windows" {
+
+		err := downloadfile("https://releases.hashicorp.com"+"/terraform/"+version+"/terraform_"+version+"_windows_amd64.zip", path)
+		if err != nil {
+			panic(err)
+		}
+
+	} else if runtime.GOOS == "Darwin" {
+		err := downloadfile("https://releases.hashicorp.com"+"/terraform/"+version+"/terraform_"+version+"_darwin_amd64.zip", path)
+		if err != nil {
+			panic(err)
+		}
+	} else if runtime.GOOS == "Linux" {
+		err := downloadfile("https://releases.hashicorp.com"+"/terraform/"+version+"/terraform_"+version+"_linux_amd64.zip", path)
+		if err != nil {
+			panic(err)
+		}
+
+	}
+
+	return nil
+
 }

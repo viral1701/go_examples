@@ -6,14 +6,16 @@ import (
 )
 
 func main() {
-	filetodelete := "c:\\Temp3\\terraform.zip"
-	zipfile := flag.String("zipfile", "", "zipfilepath")
-	extact := flag.String("extract", "", "extractdestination")
-	flag.Parse()
-	checkfile(filetodelete)
 
-	err := unzip(*zipfile, *extact)
-	if err != nil {
-		log.Fatal(err)
+	version := flag.String("version", "", "versionofterraform")
+	//zipfile := flag.String("zipfile", "", "zipfilepath")
+	//extract := flag.String("extract", "", "extractdestination")
+	path := flag.String("path", "", "downloadpath")
+	flag.Parse()
+
+	downloaderr := downloadversion(*version, *path)
+	if downloaderr != nil {
+		log.Fatal(downloaderr)
 	}
+
 }
