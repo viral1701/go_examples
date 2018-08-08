@@ -13,9 +13,9 @@ func main() {
 	path := flag.String("path", "", "downloadpath")
 	flag.Parse()
 
-	downloaderr := downloadversion(*version, *path)
-	if downloaderr != nil {
-		log.Fatal(downloaderr)
+	err := downloadversion(*version, *path)
+	if err != nil {
+		log.Fatal(err)
 	}
 
 }
