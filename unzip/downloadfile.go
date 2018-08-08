@@ -42,12 +42,12 @@ func downloadversion(version, path string) error {
 			panic(err)
 		}
 
-	} else if runtime.GOOS == "Darwin" {
+	} else if runtime.GOOS == "darwin" {
 		err := downloadfile("https://releases.hashicorp.com"+"/terraform/"+version+"/terraform_"+version+"_darwin_amd64.zip", path)
 		if err != nil {
 			panic(err)
 		}
-	} else if runtime.GOOS == "Linux" {
+	} else if runtime.GOOS == "linux" {
 		err := downloadfile("https://releases.hashicorp.com"+"/terraform/"+version+"/terraform_"+version+"_linux_amd64.zip", path)
 		if err != nil {
 			panic(err)
