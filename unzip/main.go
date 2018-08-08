@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"log"
 )
 
 func main() {
@@ -13,9 +12,6 @@ func main() {
 	path := flag.String("path", "", "downloadpath")
 	flag.Parse()
 
-	err := downloadversion(*version, *path)
-	if err != nil {
-		log.Fatal(err)
-	}
+	downloadversion(*version, *path)
 
 }
