@@ -22,7 +22,7 @@ func downloadfile(uri, filepath string) error {
 	fmt.Println("Downloading File From......" + uri)
 	response, err := http.Get(uri)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 	}
 
 	defer response.Body.Close()
