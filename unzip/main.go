@@ -7,12 +7,9 @@ import (
 func main() {
 
 	version := flag.String("version", "", "versionofterraform")
-	//zipfile := flag.String("zipfile", "", "zipfilepath")
-	extract := flag.String("extract", "", "extractdestination")
-	path := flag.String("path", "", "downloadpath")
+	extract := flag.String("extract", "", "where it extracts")
 	flag.Parse()
 
-	downloadversion(*version, *path)
-	unzip(*path, *extract)
+	downloadversion(*version, *extract)
 
 }
